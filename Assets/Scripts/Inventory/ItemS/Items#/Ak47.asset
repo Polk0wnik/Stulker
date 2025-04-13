@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b68bd3250d73014b974a754888ee667, type: 3}
+  m_Name: Ak47
+  m_EditorClassIdentifier: 
+  healAmmount: 0
+  damageAmmout: 35
+  strengthAmmout: 100
+  weightAmmount: 3
+  nameItem: Ak47
+  ammount: 1
+  icon: {fileID: 1766517803586716974, guid: 67ecaccb8d622264582e89ceb4d136d7, type: 3}
+  isEquippingItem: 1
+  isUsingItem: 0
+  itemType: 4
+  useItemType: 0
