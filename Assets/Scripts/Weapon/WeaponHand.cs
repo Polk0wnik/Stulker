@@ -9,9 +9,9 @@ public class WeaponHand : MonoBehaviour
     {
         weaponHand = GetComponent<Transform>();
     }
-    public void SetWeaponHand(GameObject weapon)
+    public bool SetWeaponHand(GameObject weapon)
     {
-        if (weapon == null) return;
+        if (weapon == null) return false;
         else
         {
             weapon.transform.SetParent(weaponHand);
@@ -19,6 +19,7 @@ public class WeaponHand : MonoBehaviour
             weapon.transform.localRotation = Quaternion.identity;
             weapon.transform.GetComponent<Rigidbody>().isKinematic = true;
             weapon.transform.GetComponent<Collider>().enabled = false;
+            return true;
         }
 
     }

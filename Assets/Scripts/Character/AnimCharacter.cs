@@ -35,4 +35,12 @@ public class AnimCharacter : MonoBehaviour
     {
         animator.SetBool("isRifle", isRifle);
     }
+    public void AimingAnim(bool isAiming)
+    {
+        animator.SetBool("isAim", isAiming);
+    }
+    public void CrouchingAnim(bool isCrouch)
+    {
+        animator.SetBool("isCrouch", isCrouch);
+    }
 }

@@ -8,6 +8,7 @@ public class CharacterMove : MonoBehaviour
     private MyCamera camera_;
     private AnimCharacter anim;
     private RaycustCharacter ray;
+    private bool isReadyForButton = false;
     public float speedMove = 6f;
     public float jumpStrenj = 4f;
     private bool isTerra = false;
@@ -25,12 +26,21 @@ public class CharacterMove : MonoBehaviour
         anim.MoveAnim(inputAxis);
         Vector3 newDirection = Rotate(inputAxis);
         Move(newDirection);
-        bool isRayfl = ray.isPickWeapon;
-        anim.RifleAnim(isRayfl);
+        Crouch();
+        if (ray.isPickWeapon)
+        {
+            anim.RifleAnim(true);
+            AimingState();
+        }
     }
     private void Update()
     {
         Jump();
+    }
+    private void AimingState()
+    {
+        bool isPressed = Input.GetMouseButton(1);
+        anim.AimingAnim(isPressed);
     }
     private void Move(Vector3 inputAxis)
     {
@@ -59,6 +69,19 @@ public class CharacterMove : MonoBehaviour
             rbPers.AddForce(Vector3.up * jumpStrenj, ForceMode.Impulse);
             anim.JumpAnim(isTerra);
         }
+    }
+    private void Crouch()
+    {
+        bool isCrouch = Input.GetKey(KeyCode.C);
+        anim.CrouchingAnim(isCrouch);
+        //if(Input.GetKey(KeyCode.LeftControl))
+        //{
+        //    anim.CrouchingAnim(true);
+        //}
+        //else
+        //{
+        //    anim.CrouchingAnim(false);
+        //}
     }
     private void OnCollisionEnter(Collision collision)
     {

@@ -19,18 +19,6 @@ public class RaycustCharacter : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F))
         {
             isPickWeapon = RaycastHitItem();
-            if (isPickWeapon) return;
-            RayPickUpItem();
-        }
-    }
-    private void RayPickUpItem()
-    {
-        ray = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(ray, out hit, rayLengs, layerItem))
-        {
-            PickUpItem currentPick = hit.collider.GetComponent<PickUpItem>();
-            currentPick.Interact();
-            Debug.Log("hit");
         }
     }
     public void Shouting(float damage)
@@ -49,13 +37,16 @@ public class RaycustCharacter : MonoBehaviour
         {
             PickUpItem pick = hit.collider.transform.GetComponent<PickUpItem>();
             bool isWeapon = pick.PickWeapon();
-            if (isWeapon)
-            {
-                weaponHand.SetWeaponHand(hit.collider.gameObject);
-                // Исправить чтобы weaponHand возвращал bool-евый результат
-                return true;
-            }
-            else return false;
+            if (RayHitWeapon(hit, isWeapon)) return true;
+            pick.Interact();
+        }
+        return false;
+    }
+    public bool RayHitWeapon(RaycastHit hit, bool isWeapon)
+    {
+        if (isWeapon)
+        {
+            return weaponHand.SetWeaponHand(hit.collider.gameObject);
         }
         else return false;
     }
