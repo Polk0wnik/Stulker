@@ -6,9 +6,11 @@ public class AnimCharacter : MonoBehaviour
 {
     private Animator animator;
     public float switchMove;
+    private int pickUpLayer;
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        pickUpLayer = animator.GetLayerIndex("pickUpItemLayer");
     }
     public void MoveAnim(Vector3 inputAxis)
     {
@@ -42,5 +44,10 @@ public class AnimCharacter : MonoBehaviour
     public void CrouchingAnim(bool isCrouch)
     {
         animator.SetBool("isCrouch", isCrouch);
+    }
+    public void PickUpItemAnim()
+    {
+        animator.SetLayerWeight(pickUpLayer, 1);
+        animator.SetTrigger("PickUpItemTr");
     }
 }

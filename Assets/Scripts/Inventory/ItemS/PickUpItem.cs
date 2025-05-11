@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
+    private AnimCharacter anim;
     private CharacterMove charact;
     private InventoryController invent;
     private Transform transItem;
@@ -16,6 +17,7 @@ public class PickUpItem : MonoBehaviour
         charact = FindObjectOfType<CharacterMove>();
         transChar = charact.GetComponent<Transform>();
         invent = FindObjectOfType<InventoryController>();
+        anim = FindObjectOfType<AnimCharacter>();
     }
     //1 - скрипт должен висеть на игровом объекте по которому хотим кликнуть. 
     //2 - На игр об должен быть колайдер
@@ -25,6 +27,7 @@ public class PickUpItem : MonoBehaviour
         Debug.Log("Pick Up Item - " + item.nameItem + " " + isAdd);
         if (isAdd)
         {
+            anim.PickUpItemAnim();
             gameObject.SetActive(false);
         }
     }
