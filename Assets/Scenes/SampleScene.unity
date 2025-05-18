@@ -3950,6 +3950,10 @@ MonoBehaviour:
   m_RigLayers:
   - m_Rig: {fileID: 349130024}
     m_Active: 1
+  - m_Rig: {fileID: 1514675710}
+    m_Active: 1
+  - m_Rig: {fileID: 600106877}
+    m_Active: 1
   - m_Rig: {fileID: 1619895678}
     m_Active: 1
   m_Effectors: []
